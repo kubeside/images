@@ -26,6 +26,9 @@ def main() -> None:
 def download_target(cache_target: CacheTarget) -> None:
     # Yes there is a security issue here allowing you to provide arbitrary options to wget
     # but it's gonna be fine as this is only admin-provided.
-    subprocess.call(["wget", "--no-clobber", cache_target["url"], "-O", config["file_name"]])
+    persistent_path = PERSISTENT_CACHE_PATH / cache_target["file_name"]
+    ram_cache_path = RAM_CACHE_PATH / cache_target["file_name"]
+    subprocess.call(["wget", "--no-clobber", cache_target["url"], "-O", persistent_path])
+    subprocess.call(["cp", persistent_path, ram_cache_path])
 
 main()
