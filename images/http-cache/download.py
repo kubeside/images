@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
 import json
-from typing
+import typing
 import subprocess
 
 ROOT_PATH = Path("/opt/http-cache")
