@@ -1,6 +1,6 @@
 FROM alpine:3.22.0
 RUN apk update
-RUN apk add nginx python3
+RUN apk add nginx python3 bash
 
 RUN mkdir /opt/http-cache
 RUN mkdir /opt/http-cache/persistent-cache
