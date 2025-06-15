@@ -8,5 +8,6 @@ RUN mkdir /opt/http-cache/ram-cache
 
 COPY ./init.sh /opt/http-cache/
 COPY ./download.py /opt/http-cache/
+COPY ./nginx.conf /etc/nginx/
 
 CMD ["/opt/http-cache/init.sh"]
