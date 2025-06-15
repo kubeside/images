@@ -1,0 +1,52 @@
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - name: http-cache
+            path: images/http-cache
+      fail-fast: false
+
+    name: Build (${{ matrix.name }})
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          submodules: "true"
+
+      - uses: dorny/paths-filter@v2
+        name: Detect changes
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'challenges/${{ matrix.path }}/**'
+              - '.github/workflows/build.yml'
+          base: "main"
+
+      - if: steps.changes.outputs.src == 'true'
+        name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - if: steps.changes.outputs.src == 'true'
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: challenges/${{ matrix.path }}
+          file: challenges/${{ matrix.path }}/Dockerfile
+          push: true
+          tags: ghcr.io/kubeside/images/${{ matrix.name }}:${{ github.sha }}
