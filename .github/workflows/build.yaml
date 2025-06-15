@@ -34,7 +34,7 @@ jobs:
               - ".github/workflows/build.yml"
           base: "master"
 
-      - if: steps.changes.outputs.src == "true"
+      - if: steps.changes.outputs.src == 'true'
         name: Log in to the Container registry
         uses: docker/login-action@v3
         with:
@@ -42,7 +42,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - if: steps.changes.outputs.src == "true"
+      - if: steps.changes.outputs.src == 'true'
         name: Build and push
         uses: docker/build-push-action@v5
         with:
