@@ -46,7 +46,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: challenges/${{ matrix.path }}
+          context: images/${{ matrix.path }}
           file: images/${{ matrix.path }}/Dockerfile
           push: true
           tags: ghcr.io/kubeside/images/${{ matrix.name }}:${{ github.sha }}
