@@ -1,0 +1,19 @@
+{
+    "activities": [
+        {
+            "type": "image",
+            "source": "assets/portrett.jpg",
+            "duration": 5000
+        },
+        {
+            "type": "image",
+            "source": "assets/arrow.webp",
+            "duration": 5000
+        },
+        {
+            "type": "web",
+            "source": "https://imavgs.no",
+            "duration": 5000
+        }
+    ]
+}
