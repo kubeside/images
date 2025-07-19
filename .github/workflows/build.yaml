@@ -14,6 +14,8 @@ jobs:
         include:
           - name: http-cache
             path: http-cache
+          - name: media-app
+            path: media-app
       fail-fast: false
 
     name: Build (${{ matrix.name }})
