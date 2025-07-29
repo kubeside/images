@@ -55,5 +55,7 @@ function formatKeys(params) {
 
 // Start app
 await setupModules();
-console.log("Serving on port 8000");
-app.listen(8000);
+
+const PORT = 80;
+console.log(`Serving on port ${PORT}`);
+app.listen(PORT);
