@@ -16,6 +16,8 @@ jobs:
             path: http-cache
           - name: media-app
             path: media-app
+          - name: metro
+            path: metro
       fail-fast: false
 
     name: Build (${{ matrix.name }})
