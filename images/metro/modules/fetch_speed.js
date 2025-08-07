@@ -6,7 +6,7 @@ export const metrics = [
         collect: async () => {
             const startTime = process.hrtime.bigint();
             
-            await fetch("https://8.8.8.8");
+            await fetch("https://8.8.8.8", {follow: "manual"});
 
             const endTime = process.hrtime.bigint();
 
@@ -22,7 +22,7 @@ export const metrics = [
             const domain = `${time}.vercel.app`;
             const startTime = process.hrtime.bigint();
             
-            await fetch("https://1.1.1.1");
+            await fetch("https://1.1.1.1", {follow: "manual"});
 
             const endTime = process.hrtime.bigint();
 
