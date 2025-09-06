@@ -14,6 +14,10 @@
             "type": "web",
             "source": "https://imavgs.no",
             "duration": 5000
+        },
+        {
+            "type": "video",
+            "path": "assets/basket.mp4"
         }
     ]
 }

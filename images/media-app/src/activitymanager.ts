@@ -2,6 +2,7 @@ import { getConfig } from "./config.ts";
 import type { ActivityConfig, BaseActivity } from "./activities/index.ts";
 import { ImageActivity } from "./activities/image.ts";
 import { WebActivity } from "./activities/web.ts";
+import { VideoActivity } from "./activities/video.ts";
 
 const ACTIVITY_BUFFER: number = 1;
 
@@ -46,8 +47,11 @@ export class ActivityManager {
     if (config.type === "image") {
       return new ImageActivity(config);
     }
-     if (config.type === "web") {
+    if (config.type === "web") {
       return new WebActivity(config);
+    }
+    if (config.type === "video") {
+      return new VideoActivity(config);
     }
     throw new Error("unsupported activity");
   }
