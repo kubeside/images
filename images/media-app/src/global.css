@@ -1,0 +1,14 @@
+body {
+    margin:0;
+    height: 100vh;
+}
+.image-activity{
+    height:100%;
+    width: 100%;
+    object-fit: cover;
+}
+.web-activity{
+    height:100%;
+    width: 100%;
+    border: none;
+}
