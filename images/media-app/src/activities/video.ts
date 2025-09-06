@@ -29,6 +29,7 @@ export class VideoActivity extends BaseActivity {
     }
     this.videoElement.removeAttribute("hidden");
     console.log("overrode completed");
+    this.videoElement.play();
     this.completed = new Promise<void>((resolve) => {
       this.videoElement?.addEventListener("ended", () => resolve())
     });
