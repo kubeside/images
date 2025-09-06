@@ -20,6 +20,7 @@ export class VideoActivity extends BaseActivity {
     this.videoElement.classList.add("activity", "video-activity");
     this.videoElement.setAttribute("hidden", "");
     this.videoElement.src = this.config.path;
+    this.videoElement.muted=true;
   }
 
   public show(): void {
