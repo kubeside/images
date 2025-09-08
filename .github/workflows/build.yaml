@@ -20,6 +20,8 @@ jobs:
             path: metro
           - name: computater
             path: computater
+          - name: info-portal
+            path: info-portal
       fail-fast: false
 
     name: Build (${{ matrix.name }})
