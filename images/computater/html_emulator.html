@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Emulator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 70vh;
+        }
+
+        .editor-section {
+            background: #f8f9fa;
+            border-right: 3px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-section {
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-header {
+            background: #495057;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header::before {
+            content: "⚡";
+            font-size: 1.2rem;
+        }
+
+        .preview-section .section-header::before {
+            content: "👁️";
+        }
+
+        .editor-container {
+            flex: 1;
+            position: relative;
+        }
+
+        #htmlEditor {
+            width: 100%;
+            height: 100%;
+            border: none;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            background: #2d3748;
+            color: #e2e8f0;
+            resize: none;
+            outline: none;
+        }
+
+        #htmlEditor:focus {
+            background: #1a202c;
+        }
+
+        .preview-container {
+            flex: 1;
+            position: relative;
+            background: white;
+        }
+
+        #preview {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .toolbar {
+            background: #6c757d;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn.secondary {
+            background: #6c757d;
+        }
+
+        .btn.secondary:hover {
+            background: #545b62;
+        }
+
+        .btn.success {
+            background: #28a745;
+        }
+
+        .btn.success:hover {
+            background: #1e7e34;
+        }
+
+        .status {
+            margin-left: auto;
+            color: white;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status.success::before {
+            content: "✅";
+        }
+
+        .status.error::before {
+            content: "❌";
+        }
+
+        .examples {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-top: 2px solid #dee2e6;
+        }
+
+        .examples h3 {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .example-btn {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .example-btn:hover {
+            background: #138496;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+
+            .editor-section {
+                border-right: none;
+                border-bottom: 3px solid #e9ecef;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+
+        .line-numbers {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 40px;
+            background: #1a202c;
+            color: #718096;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 0 5px;
+            border-right: 1px solid #4a5568;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        #htmlEditor {
+            padding-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>HTML Emulator</h1>
+            <p>Skriv HTML-kode og se resultatet i sanntid.</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="editor-section">
+                <div class="section-header">
+                    HTML Editor 
+                </div>
+                <div class="toolbar">
+                    <button class="btn" onclick="clearEditor()">Fjern text</button>
+                    <button class="btn secondary" onclick="formatCode()">Format</button>
+                    <button class="btn success" onclick="downloadHTML()">Last ned</button>
+                    <button class="btn secondary"><a style="text-decoration: none; color:#fff; " href="index.html">Tilbake til hovedsiden</a> </button>
+                    <div class="status success" id="status">Ferdig</div>
+                </div>
+                <div class="editor-container">
+                    <div class="line-numbers" id="lineNumbers"></div>
+                    <textarea id="htmlEditor" placeholder="Type your HTML code here..."><!DOCTYPE html>
+                        <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>My HTML Page</title>
+                                <style>
+                                    body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .button {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Velkommen til HTML-emulatoren!</h1>
+        <p>Dette er en live HTML-redigerer. Du kan endre denne koden og se endringene umiddelbart i forhåndsvisningspanelet.</p>
+        <p>Prøv å endre farger, legge til nye elementer, eller lage ditt eget design!</p>
+        <button class="button" onclick="alert('Hello from HTML Emulator!')">Click Me!</button>
+    </div>
+</body>
+</html></textarea>
+</div>
+<div class="examples">
+    <h3>Prøv noen av de eksemplene:</h3>
+    <button class="example-btn" onclick="loadExample('basic')">Enkel nettside</button>
+    <button class="example-btn" onclick="loadExample('form')">Form</button>
+    <button class="example-btn" onclick="loadExample('table')">Table</button>
+    <button class="example-btn" onclick="loadExample('flexbox')">Flexbox</button>
+    <button class="example-btn" onclick="loadExample('animation')">Animasjon</button>
+</div>
+</div>
+
+<div class="preview-section">
+    <div class="section-header">
+        Live Preview
+    </div>
+    <div class="preview-container">
+        <iframe id="preview" sandbox="allow-scripts allow-same-origin allow-modals allow-forms allow-popups"></iframe>
+    </div>
+</div>
+</div>
+</div>
+
+    <script src="html-editor.js"></script>
+</body>
+</html>
+

@@ -18,6 +18,8 @@ jobs:
             path: media-app
           - name: metro
             path: metro
+          - name: computater
+            path: computater
       fail-fast: false
 
     name: Build (${{ matrix.name }})

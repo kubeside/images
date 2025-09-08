@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/symbHTML.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Grunnleggende HTML</title>
+
+</head>
+<body>
+    
+    <div class="Basiccontainer">
+        <nav class="basicNav">
+           
+            <ul>
+                <li><a href="#tagger"><span>Tagger</span></a></li>
+                <li><a href="#DOM"><span>DOM</span></a></li>
+                <li><a href="#git"><span>GIT</span></a></li>
+                <li><a href="#oppgaver"><span>Oppgaver</span></a></li>
+                <li><a href="index.html"><span>Main</span></a></li>
+                
+            </ul>
+        
+        </nav>
+
+        <main class="basicsMain">
+            <div class="picsBasics">
+                <img class="basicmainpic1" src="img/html_code_background.webp" alt="html1">
+
+            </div>
+            
+            <article class="introHTML">
+                <h4 id="btn1" class="textspeech1"><i onclick="speak()" class="fa-solid fa-book-open-reader" id="t1"></i></h4>
+                <!-- <button class="text-to-speech1" onclick="speak()">text-to-speech</button> -->
+            
+                <h1>Hvorfor lærer du HTML?</h1>
+                <p id="speechText">
+                    Har du noen gang lurt på hvordan nettsider blir til? 
+                    Svaret starter nesten alltid med HTML og CSS. HTML bygger selve skjelettet på en nettside – overskrifter, tekst, bilder og lenker. CSS gir sidene farge, form og stil. Sammen skaper de alt fra enkle blogger til avanserte nettbutikker.
+                    Selv i en tid med moderne rammeverk som React, Angular og Vue, ligger HTML-strukturen fortsatt i bunnen. Når du forstår HTML og CSS, blir det mye enklere å lære nye verktøy og teknologier. Du får et solid fundament som gjør deg mer fleksibel og verdifull som utvikler eller designer.
+                    I Norge er etterspørselen etter folk som kan bygge brukervennlige og pene nettsider fortsatt høy. Med kunnskap i HTML, CSS og JavaScript kan du åpne døren til en spennende karriere – enten du vil lage egne prosjekter, jobbe i et kreativt byrå eller bidra til å utvikle digitale løsninger for bedrifter.
+                    Å lære HTML og CSS handler ikke bare om koding – det handler om å skape, forme og dele ideer med verden.
+                </p>
+
+            </article>
+            <article class="grunnHTML">
+                <!-- <button class="text-to-speech1" onclick="textToSpeech()">text-to-speech</button> -->
+                <h4 class="textspeech2" ><i onclick="textToSpeech()" class="fa-solid fa-book-open-reader" id="btn2"></i></h4>
+                <h2>HTML: Hva er dette?</h2>
+
+                <h3><strong>Internett er en del av hverdagen vår.</strong></h3>
+
+
+                
+                <p class="HvaerHTML1">
+                    Du har sikkert bestilt bussbilletter, kjøpt pizza eller handlet klær via en nettside eller app.
+                     Der kan du velge blant mange produkter og tjenester – presentert med bilder, tekst, videoer og kanskje til og med musikk.
+                     Men selv om vi gjør dette daglig, er det fortsatt mange som ikke vet hvordan det egentlig fungerer. Hvordan dukker alle bildene, 
+                     beskrivelsene og knappene opp på skjermen din – enten du bruker mobil eller PC?
+                     Svaret ligger i HTML – språket som bygger opp innholdet du ser på nettet. Velkommen til HTML-verden!
+                </p>
+
+                <p>
+                    HTML er et markeringsspråk som brukes til å lage <i>nettsider</i>, <i>webapplikasjoner</i>, 
+                    <i>skrivebordsapplikasjoner</i> og <i>mobilapplikasjoner</i>.
+                    I dette prosjektet er det webutvikling og nettsider som er hovedtema, og vi skal derfor 
+                    ikke gå nærmere inn på de andre teknologiene som ble nevnt.
+
+                    Et markeringsspråk er et regelsett som brukes til å definere formatering, struktur og innhold i et dokument ved hjelp av "tagger". En tagg kan beskrive hva slags data som skal vises.
+                    I dette eksemplet kan vi si at hver eske tilsvarer en tagg, 
+                    mens innholdet i eskene tilsvarer informasjonen som taggen omgir.
+                    
+                    La oss si at vi har tre forskjellige esker, hver med sitt innhold:
+                    <ul class="html_innhold">
+                        <li><p> - eske1 inneholder et par Nike-sko</p></li>
+                        <li><p> - eske2 inneholder sjokolade</p></li>
+                        <li><p> - eske3 inneholder pizza</p></li>
+                    </ul>
+
+
+
+                </p>
+                
+                <ul class="tagg_metafor">
+                    <li><img src="img/skoeske.jpeg"  alt=""></li>
+                    <li><img src="img/chocolate.jpg" alt=""></li>
+                    <li><img src="img/pizza.jpg" alt=""></li>
+                </ul>
+                <p>Hvis vi bruker en kodeeditor, kan disse eskene – altså taggene – se slik ut:</p>
+
+                <ul>
+                    <li><img src="img/htmlbasic1.png" alt=""></li>
+                    <li></li>
+                </ul>
+                <p>
+                    Men ekte HTML-tagger ser slik ut:
+
+                </p>
+                <img src="img/ektetagg.png" alt="">
+
+
+
+
+                
+            </article>
+            <article id="tagger" class="tagger" >
+                <h2>Grunnleggende HTML-tagger og deres funksjon</h2>
+                <h4 class="textspeech1"><i onclick="read_Tagg()" class="fa-solid fa-book-open-reader" id="t1"></i></h4>
+                <p style="padding: 1.5rem;">
+                    HTML-taggene forteller nettleseren om innholdet og strukturen til de ulike 
+                    elementene på nettsiden. At overskrifter får større skriftstørrelse, eller
+                     at lenker blir blå og understreket, er en tilleggseffekt som mange nettlesere 
+                     gir teksten for å synliggjøre elementenes rolle.
+                    I dag skal utviklere bruke et eksternt CSS-dokument (stilark) for å angi instruksjoner som kun 
+                    påvirker nettsidens utseende, selv om enkelte eldre versjoner av HTML har støtte for dette direkte. 
+                    For funksjonalitet benyttes et skriptspråk, hvor JavaScript er det mest brukte i dag.
+                </p>
+                <table class="html-tagger-tabell">
+                <thead>
+                    <tr>
+                    <th>Tagg</th>
+                    <th>Forklaring</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><strong>&lt;!DOCTYPE html&gt;</strong></td>
+                    <td>Deklarasjon som forteller nettleseren at dokumentet er skrevet i HTML5.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;html&gt;</strong></td>
+                    <td>Den overordnede containeren for hele HTML-dokumentet.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;head&gt;</strong></td>
+                    <td>Inneholder metadata om dokumentet, som for eksempel tegnsett og tittel.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;title&gt;</strong></td>
+                    <td>Viser navnet på siden i nettleserens fane.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;body&gt;</strong></td>
+                    <td>Inneholder det som vises på nettsiden, inkludert tekst, lenker, bilder, osv.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;h1&gt;, &lt;h2&gt;, osv.</strong></td>
+                    <td>Overskrifter av forskjellige nivåer, hvor &lt;h1&gt; er den største og mest betydningsfulle.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;p&gt;</strong></td>
+                    <td>Avsnitt som brukes for å gruppere tekst.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;a&gt;</strong></td>
+                    <td>Anker-tagg som brukes til å lage lenker. <code>href</code>-attributtet angir hvor lenken går.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;ul&gt;</strong> og <strong>&lt;li&gt;</strong></td>
+                    <td>En uordnet liste (<strong>ul</strong> står for "unordered list") og listeelementer (<strong>li</strong> står for "list item").</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;br&gt;</strong></td>
+                    <td>Linjeskift som brukes til å lage en ny linje uten å starte et nytt avsnitt.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;hr&gt;</strong></td>
+                    <td>Horisontal linje som brukes til å visuelt dele opp innhold.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;img&gt;</strong></td>
+                    <td>Brukes for å vise bilder på nettsiden.</td>
+                    </tr>
+                    <tr>
+                    <td><strong>&lt;div&gt;</strong></td>
+                    <td>En container som brukes til å gruppere innhold og strukturere siden.</td>
+                    </tr>
+                </tbody>
+                </table>
+
+                
+
+            </article>
+            <article id="DOM"  class="workflow_nettleser">
+                <h2> Hva er en nettleser og hvordan fungerer den?</h2>
+                <h4 class="textspeech1"><i onclick="read_DOM()" class="fa-solid fa-book-open-reader" id="t1"></i></h4>
+                <p>
+                    Det å oppsummere hele prosessen til en nettleser i bare noen få ord er ikke en lett oppgave, men vi kan si at
+                    en nettleser er et program som henter informasjon
+                    og viser den på dataskjermen. En nettleser består vanligvis av 
+                    flere komponenter – funksjoner – med ulike oppgaver. Den viktigste komponenten er gjengivelsesmotoren
+                    (rendering engine), som har som oppgave å <strong>hente og tolke</strong> HTML-kode. I denne prosessen
+                    bygger nettleseren en trestruktur kalt <strong>DOM</strong> (Document Object Model), som definerer hierarkiet
+                    til elementene på en nettside.
+                    Diagrammet nedenfor viser grafisk en oppsummering av prosessen som foregår når nettleseren kjøres.
+                    <br>
+                    <figure>
+                        <img style="border: 1px solid black;width:50%; " src="img/dom_bygging_forbedret.png" alt="">
+                    </figure>
+                </p>
+                <p>
+                    Diagrammet under viser et eksempel på DOM-hierarkiet av elementene.
+                    <figure style="display: flex;flex-direction: column; justify-content: center;">
+                        <div style="display: flex; justify-content: centers;"><img style="width: 25rem;height: 25rem;" class="dom1" src="img/DOM1.png" alt="">
+                        <img style="width: 25rem; height:25rem;" src="img/DOM2.png" alt="">
+                        </div>
+                        <figcaption class="fork_dom"> <h4 class="textspeech1"><i onclick="read_DOM()" class="fa-solid fa-book-open-reader" id="t1"></i></h4>  <strong>&lt;html&gt;</strong> er rotelementet i dokumentet. <br>
+                             Alle andre elementer er etterkommere av dette. <br> 
+                            &lt;html&gt; har to direkte barn: <strong>&lt;head&gt;</strong>  og <strong>&lt;body&gt;</strong>. <br> Head-elementet inneholder et title-element. Teksten "Grunnleggende HTML" er innholdet i title-elementet. <br>
+                         Body-elementet inneholder et h1-element (en overskrift). Teksten "Åssiden videregående skole" er innholdet i h1-elementet.
+                        </figcaption>
+                    </figure>
+                    <p>Etter at DOM-strukturen er opprettet, vil nettleseren vise elementene på skjermen.</p>
+                    <img style="margin: .75rem 0 ; border: 1px solid black; width: 30%; " src="img/resDOM.png" alt="">
+                </p>
+                <h3>Du finner mer informasjon om Tagger og HTML-struktur <a style="text-decoration: none;" href="https://ndla.no/nb/r/konseptutvikling-og-programmering-im-ikm-vg1/nettsider-bygges-med-html-kode/bc8e8d7310">HER</a>. </h3>
+            </article>
+
+           
+            
+            <div class="git" id="git">
+                <article class="git_github">
+                    <div class="intro_git">
+
+                        <h2>Introduksjon til GIT og GitHub</h2>
+                        <h4 class="textspeech1"><i onclick="read_git_intro()" class="fa-solid fa-book-open-reader" id="t1"></i></h4>
+                        <h3>Hva er GIT?</h3>
+                        <p>
+                            Git er et versjonskontrollsystem (et dataprogram) som lar deg spore endringer i filer over tid. 
+                            Tenk på det som en "tidsmaskin" for koden din – du kan alltid gå tilbake til tidligere versjoner hvis noe går galt.
+                            Git er som å ta "øyeblikksbilder" (snapshots) av prosjektet 
+                            ditt hver gang du gjør endringer. Disse øyeblikksbildene kalles "commits".
+                        </p>
+                        <h3>Hva er GitHub</h3>
+                        <p>
+                            GitHub er en nettbasert plattform som bruker Git. 
+                            Det er som en "skylagring" for kodeprosjektene dine, men med superkrefter 
+                            for samarbeid.
+                        </p>
+                        <h3>Hvorfor bruker vi Git og GitHub?</h3>
+                        <p> Med et versjonskontrollsystem kan du spore alle endringer i koden, og du kan enkelt gå tilbake 
+                            til en tidligere versjon. Om du samarbeider med andre elever/utviklere kan du 
+                            se hvem som har gjort hvilke endringer og når. <br> Flere elever kan jobbe på samme prosjekt samtidig,
+                            siden GitHub tillater dere automatisk sammenslåing av endringer med konfliktløsning når flere 
+                            endrer samme fil. GitHub er perfekt for personlig utvikling siden plattformen viser arbeidshistorikken
+                            til potensielle arbeidsgivere. GitHub er i dag "standardverktøy" i IT-bransjen. Store og små bedrifter
+                            i både offentlig og privat sektor bruker Git og GitHub, og noen av disse er:
+                            <ul>
+                                <li><p>Microsoft</p></li>
+                                <li><p>Google</p></li>
+                                <li>Meta (Facebook, Instagram ...)</li>
+                                <li>Netflix og andre</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="install_git">
+
+                        <h3>Installasjon av Git</h3>
+                        <h4 class="textspeech1"><i onclick="read_installGit()" class="fa-solid fa-book-open-reader" id="t1"></i></h4>
+                        <h4>For Windows</h4>
+                        <ul>
+                            <li><p>Gå til <a href="https://git-scm.com/downloads/win">https://git-scm.com/downloads/win</a></p> </li>
+                            <li><p>Klikk og last ned <strong>Git for Windows/x64 Setup.</strong></p></li>
+                            <li><p>Kjør installasjonsfilen (.exe)</p></li>
+                            <li><p>og følg instruksjonene.</p></li>
+                            <li><p>Etter installasjonen er ferdig, åpne Command Prompt eller PowerShell og kjør "git --version"</p></li>
+                            <li><p>Hvis Git er korrekt installert, får du Git-versjonen installert.</p></li>
+                            <li><iframe width="420" height="315"
+                                    src="https://www.youtube.com/embed/JNWXQskz4Uk"
+                                    frameborder="0"
+                                    allowfullscreen>
+                            </iframe>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="install_git_mac">
+                        <h4>For macOS</h4>
+                        <h4 class="textspeech1"><i onclick="read_installGitMac()" class="fa-solid fa-book-open-reader" id="t1"></i></h4>
+                        <ul>
+                            <li><p>Kjør brew install git i terminalen</p></li>
+                            <li><p>Etter at Git er ferdig installert, kjør "git --version"</p> </li>
+                            <li><p>Hvis Git er korrekt installert, får du Git-versjonen installert.</p></li>
+                            <li><iframe width="420" height="315"
+                                    src="https://www.youtube.com/embed/9GZmaxaQV0c"
+                                    frameborder="0"
+                                    allowfullscreen>
+                            </iframe>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <h3>Opprett en GitHub-konto</h3>
+                    <h4>Steg 1 </h4>
+                    <ul><p>Gå til <a href="https://github.com/">https://github.com/</a></p><li></li>
+                    <li><p>Klikk på "Sign up" (øverst til høyre)</p></li>
+                    </ul>
+                    <h4>steg 2</h4>
+                    <ul>
+                        <li><p>Fyll ut registreringsskjemaet</p></li>
+                        <li><p>Velg et brukernavn. Det må være unikt, og kan inneholde bokstaver, tall og andre skrifttegn som @ eller # om du ønsker</p></li>
+                        <li><p>Skriv inn epostadressen din. Det må være samme epostadresse du konfigurerer GIT med</p></li>
+                        <li><p>Velg et passord.</p></li>
+                    </ul>
+                    <h4>Steg 3</h4>
+                    <ul>
+                        <li><p>Løs Captcha (verifiser at du ikke er en robot)</p></li>
+                    </ul>
+                    <h4>Steg 4</h4>
+                    <ul>
+                        <li>
+                            <p>Velg en plan: Velg "free"</p>
+                        </li>
+                    </ul>
+                    <h4>Steg 5</h4>
+                    <ul>
+                        <li><p>Aktiver GitHub-kontoen din. Sjekk e-postkassen din og se etter en e-post fra GitHub</p></li>
+                        <li><p>Den har "Please verify your email address" som emne</p></li>
+                        <li><p>Klikk på "Verify your email address"-knappen. </p></li>
+                        <li><p>Du blir omdirigert til GitHub og kontoen din er nå aktivert</p></li>
+                    </ul>
+                    <h4>Steg 6</h4>
+                    <ul>
+                        <li><p>Logg inn første gang:</p></li>
+                        <li><p>Skriv inn brukernavn og passord</p></li>
+                        <li><p>Klikk på "Sign in"</p></li>
+                        <li><p>Rediger profilen din / last opp bilder om du ønsker det.</p></li>
+                    </ul>
+    
+                </article>
+                <article class="useGitGitHub">
+                    <h2>Opprett første repositorium</h2>
+                    <ul>
+                        <li><p>Logg inn og klikk deretter på bildet ditt – øverst til høyre på siden –</p></li>
+                        <li><img src="img/github1.png" alt=""></li>
+                        <li><p>En pop-up-meny kommer opp med flere valg. Klikk på "Your repositories"</p></li>
+                        <li><img src="img/tutorial_2.png" alt=""></li>
+                        <li><p>Hvis dette er første gang du bruker GitHub, skal du bare se noen knapper. Finn "New"-knappen</p></li>
+                        <li><img src="img/tutorial3.png" alt=""></li>
+                        <li><p>Gi et navn til repoet ditt og klikk på "Create repository"</p></li>
+                        <li><img src="img/tutorial2.png" alt=""></li>
+                        <li><p>Deretter får du to lister med kommandoer. Du skal bare bruke 3 av disse 
+                    </ul>
+                </article>
+                <div class="HTMLoppgaver">
+
+                    <article id="oppgaver" class="oppgaverHTML">
+                        <h2>Oppgaver</h2>
+                        <h4 class="textspeech1"><i onclick="read_oppgaver()" class="fa-solid fa-book-open-reader" id="t1"></i></h4>
+                        <h3>Arbeidsmåte og levering</h3>
+                        <p>I dette prosjektet skal du lære om grunnleggende
+                             konsepter i HTML. Dette danner et viktig fundament for 
+                             videre arbeid med webutviklingsprosjekter. Det er også en 
+                             fordel å bli godt kjent med PC-en din og funksjonene den 
+                             tilbyr. Dere skal jobbe i par, noe som gir mulighet til 
+                             samarbeid og erfaringsdeling. Prosjektet leveres likevel 
+                             individuelt i Teams. <br>
+                             Dette prosjektet blir vurdert som enten godkjent 
+                             eller ikke godkjent. Selv om du ikke får karakter på 
+                             akkurat dette, er det viktig å ta det seriøst. Det du 
+                             lærer her skal du bruke i senere prosjekter hvor du får
+                              karakter, og det gir deg et godt grunnlag for mer 
+                              avanserte oppgaver. Konseptene du øver på nå er også 
+                              nyttige videre på VG2.
+                            .<br>
+                            <strong>Vurderingsform : Godkjent/Ikke godkjent</strong> <br>
+                            <strong>Frist for innlevering: 04.sept kl.15</strong> <br>
+                            <strong></strong> </p>
+                        <h3>Lag din egen nettside</h3>
+                        <p>I denne oppgaven skal du bruke HTML-tagger til å lage en 
+                            egen artikkel om et tema du velger.
+                            Det er ingen begrensning på hvor mye du kan skrive, 
+                            men husk å forklare tankene og meningene dine tydelig. 
+                            Du kan også bruke bilder, videoer og lenker til ressurser 
+                            på internett for å gjøre innholdet mer spennende.
+                            Hvis du allerede kan litt HTML og CSS, kan du prøve deg 
+                            på Oppgave B. Dersom dette er første gang du koder i HTML, 
+                            holder det at du leverer Oppgave A.</p>
+                        <p>
+                          Dere skal i tillegg skrive en kort logg (rapport) der
+                           du beskriver arbeidsprosessen i prosjektet. Her kan 
+                           du også fortelle hva du har lært og hvor vanskelig 
+                           du synes prosjektet var. I tillegg skal du fylle ut og levere et KI-skjema, der du forklarer hvordan du har brukt KI i arbeidet ditt.
+                        </p>
+    
+                        <h4>Oppgave A - Lag en enkel nettside om ett av disse temaene:</h4>
+                        <ul>
+                            <li><p>Jeg som IM-elev på Åssiden videregående skole</p></li>
+                            <li><p>Mine planer etter VG2</p></li>
+                            <li><p>Demokrati og ytringsfrihet på skolen</p></li>
+                            <li><p>Falske nyheter</p></li>
+                            <li><p>PC-hardware</p></li>
+                            <li><p>Personvern i sosiale medier</p></li>
+                        </ul>
+                        <h4>Oppgave B - Lag en nettside om ett av temaene fra Oppgave A,
+                             men med mer innhold og funksjonalitet: </h4>
+    
+                        <ul>
+                            <li><p>Bruk bilder, videoer eller andre medier som HTML støtter.</p></li>
+                            <li><p>Lag et enkelt kontaktskjema ved å bruke &lt;form&gt;-taggen.</p></li>
+                            <li><p>Det er ikke krav om CSS, men du kan bruke det om du ønsker (CSS teller ikke i vurderingen). </p></li>
+                            <li><p>Publiser nettsiden på <strong><a href="https://vercel.com/">Vercel</a></strong>, slik at alle med lenken kan se den.</p></li>
+                        </ul>
+    
+    
+                    </article>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="exp.js"></script>
+</body>
+</html>
+
