@@ -5,32 +5,9 @@
             "path": "assets/a.mp4"
         },
         {
-            "type": "video",
-            "path": "assets/Basket.MOV"
-        },
-        {
             "type": "image",
-            "source": "assets/Borg.png",
+            "source": "assets/arrow.webp",
             "duration": 5000
-        },
-        {
-            "type": "image",
-            "source": "assets/Lysmaling.jpg",
-            "duration": 5000
-        },
-        {
-            "type": "web",
-            "source": "https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-58733/Norge/Buskerud/Drammen/Drammen",
-            "duration": 7000
-        },
-        {
-            "type": "video",
-            "path": "assets/Jernbanebroen.mp4"
-        },
-        {
-            "type": "image",
-            "source": "assets/Vinter.jpg",
-            "duration": 5000
-        }
+        }        
     ]
 }
