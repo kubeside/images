@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import topLevelAwait from "vite-plugin-top-level-await";
 
 export default defineConfig({
     server:{
@@ -9,6 +10,9 @@ export default defineConfig({
                 rewrite: (path) => path.replace(/^\/api/, ''),
             }
         }
-    }
+    },
+    plugins: [
+        topLevelAwait()
+    ]
     
 })
