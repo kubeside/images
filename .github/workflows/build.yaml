@@ -22,6 +22,8 @@ jobs:
             path: computater
           - name: info-portal
             path: info-portal
+          - name: adventofcode
+            path: adventofcode
       fail-fast: false
 
     name: Build (${{ matrix.name }})

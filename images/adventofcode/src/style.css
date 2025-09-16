@@ -1,0 +1,50 @@
+header{  
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#scores{
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(27, max-content);
+}
+
+.row{
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 27;
+  gap: 10px;
+}
+
+.header-row{
+  background-color: rgb(189, 186, 186);
+  padding: 5px;
+  font-weight: bold;
+}
+
+.highlighted-user{
+  background-color: rgb(228, 116, 180);
+  padding: 5px;
+  font-weight: bold;
+}
+
+.join-code{
+  padding: 5px;
+  background-color: rgb(189, 186, 186);
+}
+
+.star{
+  text-align: center;
+}
+
+.subtitle{  
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#last-refresh{
+  padding: 5px;
+  background-color: rgb(189, 186, 186);
+  font-weight: normal;
+}
+
