@@ -24,6 +24,8 @@ jobs:
             path: info-portal
           - name: adventofcode
             path: adventofcode
+          - name: adventofcode-backend
+            path: adventofcode-backend
       fail-fast: false
 
     name: Build (${{ matrix.name }})
