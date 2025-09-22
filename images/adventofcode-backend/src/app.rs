@@ -1,5 +1,5 @@
 use std::sync::Arc;
-use axum::extract::State;
+use axum::extract::{Query, State};
 use axum::http::{HeaderMap, HeaderValue};
 use axum::Json;
 use axum::routing::get;
@@ -53,8 +53,13 @@ pub(crate) enum AppRunError {
     InvalidConfig(#[from] serde_json::Error)
 }
 
-async fn get_leaderboard_v1(State(state): State<Arc<AppState>>) -> Result<Json<serde_json::Value>, APIError> {
-    let url = format!("https://adventofcode.com/api/leaderboard/private/view/{}.json", state.config.leaderboard_id);
+#[derive(serde::Deserialize)]
+struct GetLeaderboardQueryV1 {
+    year: u32
+}
+
+async fn get_leaderboard_v1(Query(query): Query<GetLeaderboardQueryV1>, State(state): State<Arc<AppState>>) -> Result<Json<serde_json::Value>, APIError> {
+    let url = format!("https://adventofcode.com/api/{}/leaderboard/private/view/{}.json", query.year, state.config.leaderboard_id);
     state.http_client.get(url)
         .header(COOKIE, format!("session={}", state.config.session_token))
         .send()
