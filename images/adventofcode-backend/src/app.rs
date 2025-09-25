@@ -63,18 +63,21 @@ struct GetLeaderboardQueryV1 {
 }
 
 async fn get_leaderboard_v1(Query(query): Query<GetLeaderboardQueryV1>, State(state): State<Arc<AppState>>) -> Result<Json<serde_json::Value>, APIError> {
-    let url = format!("https://adventofcode.com/api/{}/leaderboard/private/view/{}.json", query.year, state.config.leaderboard_id);
+    let url = format!("https://adventofcode.com/{}/leaderboard/private/view/{}.json", query.year, state.config.leaderboard_id);
     state.http_client.get(url)
         .header(COOKIE, format!("session={}", state.config.session_token))
         .send()
         .await
+        .inspect_err(|error| tracing::error!(?error, "when sending leaderboard request"))
         .ok()
         .ok_or(APIError::InvalidResponseFromAdventOfCode)?
         .error_for_status()
+        .inspect_err(|error| tracing::error!(?error, "when checking status"))
         .ok()
         .ok_or(APIError::InvalidResponseFromAdventOfCode)?
         .json()
         .await
+        .inspect_err(|error| tracing::error!(?error, "when reading json"))
         .ok()
         .ok_or(APIError::InvalidResponseFromAdventOfCode)
         .map(|response| Json(response))
