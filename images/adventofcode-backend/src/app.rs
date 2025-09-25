@@ -5,6 +5,8 @@ use axum::Json;
 use axum::routing::get;
 use reqwest::header::{COOKIE, USER_AGENT};
 use tokio::net::TcpListener;
+use tower_http::cors::CorsLayer;
+use tower_http::trace::TraceLayer;
 use crate::error::APIError;
 use crate::state::AppState;
 
@@ -34,7 +36,9 @@ pub(crate) async fn run() -> Result<(), AppRunError> {
 
     let app = axum::Router::new()
         .route("/leaderboard/v1", get(get_leaderboard_v1))
-        .with_state(state);
+        .with_state(state)
+        .layer(CorsLayer::permissive())
+        .layer(TraceLayer::new_for_http());
 
     axum::serve(listener, app).await.map_err(AppRunError::ServeError)?;
 
