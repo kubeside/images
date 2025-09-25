@@ -2,7 +2,7 @@ FROM rust:1.90.0-slim-bullseye AS builder
 WORKDIR /opt/aoc/build
 
 RUN apt-get update
-RUN apt-get install -y libssl-dev pkg-config
+RUN apt-get install -y libssl-dev pkg-config ca-certificates
 
 COPY . ./
 
