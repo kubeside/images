@@ -1,10 +1,12 @@
 use std::sync::Arc;
-use axum::extract::State;
+use axum::extract::{Query, State};
 use axum::http::{HeaderMap, HeaderValue};
 use axum::Json;
 use axum::routing::get;
 use reqwest::header::{COOKIE, USER_AGENT};
 use tokio::net::TcpListener;
+use tower_http::cors::CorsLayer;
+use tower_http::trace::TraceLayer;
 use crate::error::APIError;
 use crate::state::AppState;
 
@@ -34,7 +36,9 @@ pub(crate) async fn run() -> Result<(), AppRunError> {
 
     let app = axum::Router::new()
         .route("/leaderboard/v1", get(get_leaderboard_v1))
-        .with_state(state);
+        .with_state(state)
+        .layer(CorsLayer::permissive())
+        .layer(TraceLayer::new_for_http());
 
     axum::serve(listener, app).await.map_err(AppRunError::ServeError)?;
 
@@ -53,19 +57,27 @@ pub(crate) enum AppRunError {
     InvalidConfig(#[from] serde_json::Error)
 }
 
-async fn get_leaderboard_v1(State(state): State<Arc<AppState>>) -> Result<Json<serde_json::Value>, APIError> {
-    let url = format!("https://adventofcode.com/api/leaderboard/private/view/{}.json", state.config.leaderboard_id);
+#[derive(serde::Deserialize)]
+struct GetLeaderboardQueryV1 {
+    year: u32
+}
+
+async fn get_leaderboard_v1(Query(query): Query<GetLeaderboardQueryV1>, State(state): State<Arc<AppState>>) -> Result<Json<serde_json::Value>, APIError> {
+    let url = format!("https://adventofcode.com/{}/leaderboard/private/view/{}.json", query.year, state.config.leaderboard_id);
     state.http_client.get(url)
         .header(COOKIE, format!("session={}", state.config.session_token))
         .send()
         .await
+        .inspect_err(|error| tracing::error!(?error, "when sending leaderboard request"))
         .ok()
         .ok_or(APIError::InvalidResponseFromAdventOfCode)?
         .error_for_status()
+        .inspect_err(|error| tracing::error!(?error, "when checking status"))
         .ok()
         .ok_or(APIError::InvalidResponseFromAdventOfCode)?
         .json()
         .await
+        .inspect_err(|error| tracing::error!(?error, "when reading json"))
         .ok()
         .ok_or(APIError::InvalidResponseFromAdventOfCode)
         .map(|response| Json(response))

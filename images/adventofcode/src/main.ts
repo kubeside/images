@@ -6,9 +6,11 @@ import { LeaderboardData } from "./types";
 const CONFIG = await getConfig();
 
 async function updateLeaderboard() {
-  document.cookie = `session=${CONFIG.sessionToken}`;
+  const searchParams = new URLSearchParams({
+    year: CONFIG.year.toString()
+  });
   let response = await fetch(
-    `/api/${CONFIG.year}/leaderboard/private/view/${CONFIG.leaderboardId}.json`
+    `${CONFIG.apiBase}/leaderboard/v1?${searchParams}`
   );
   let data = (await response.json()) as LeaderboardData;
   showLeaderboard(data);

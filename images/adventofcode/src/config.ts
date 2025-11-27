@@ -1,7 +1,6 @@
 export type Config = {
   year: number;
-  sessionToken: string;
-  leaderboardId: number;
+  apiBase: string,
   highlightDuration: number;
 };
 
