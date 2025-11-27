@@ -48,8 +48,11 @@ header{
   font-weight: normal;
 }
 
-.tree {
-  float: right;
-  margin-left: 10px; /* litt luft til venstre */
+#content{
+  display: flex;
+  gap: 15px;
 }
+
+
+
 
