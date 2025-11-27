@@ -50,7 +50,7 @@ function showLeaderboard(data: LeaderboardData) {
       nameElement.textContent = "Anonym";
     }
     row.appendChild(nameElement);
-    for (let day = 1; day < 26; day++) {
+    for (let day = 1; day < 13; day++) {
       let dayElement = document.createElement("span");
       row.appendChild(dayElement);
       dayElement.classList.add("star");

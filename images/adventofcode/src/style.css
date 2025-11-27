@@ -6,13 +6,13 @@ header{
 #scores{
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(27, max-content);
+  grid-template-columns: repeat(14, max-content);
 }
 
 .row{
   display: grid;
   grid-template-columns: subgrid;
-  grid-column: span 27;
+  grid-column: span 14;
   gap: 10px;
 }
 
@@ -46,5 +46,10 @@ header{
   padding: 5px;
   background-color: rgb(189, 186, 186);
   font-weight: normal;
+}
+
+.tree {
+  float: right;
+  margin-left: 10px; /* litt luft til venstre */
 }
 
