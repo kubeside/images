@@ -3,6 +3,10 @@ header{
   grid-template-columns: repeat(2, 1fr);
 }
 
+body{
+  background-color: white;
+}
+
 #scores{
   display: grid;
   gap: 10px;
