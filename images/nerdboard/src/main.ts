@@ -15,11 +15,11 @@ async function main(): Promise<void> {
 		}
 	}
 	const challenges = await getChallenges();
-	// for (const challenge of challenges) {
-	// 	if (!seenChallengeIds.includes(challenge.name)) {
-	// 		seenChallengeIds.push(challenge.name);
-	// 	}
-	// }
+	for (const challenge of challenges) {
+		if (!seenChallengeIds.includes(challenge.name)) {
+			seenChallengeIds.push(challenge.name);
+		}
+	}
 
 	const websocket = new WebSocket("wss://nerd.imavgs.no/api/events");
 	websocket.addEventListener("close", () => {
