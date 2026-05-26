@@ -26,6 +26,8 @@ jobs:
             path: adventofcode
           - name: adventofcode-backend
             path: adventofcode-backend
+          - name: nerdboard
+            path: nerdboard
       fail-fast: false
 
     name: Build (${{ matrix.name }})
