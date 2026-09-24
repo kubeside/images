@@ -64,51 +64,51 @@ export const metrics = [
         }
     },
     {
-	name: "opnsense_gateway_rtt",
-	type: "gauge",
-	description: "The RTT to the ISP",
-	collect: async () => {
-		const r = await fetch(`${OPNSENSE_API_URL}/api/routing/settings/searchGateway`, { headers: { Authorization: OPNSENSE_AUTH }});
-
-		const repsonse = await r.json();
-		if (r.status !== 200) {
-			throw new Error(response);
-		}
-
-		const gateways = response.data.rows;
-
-		return gateways.map(gateway => {
-			return {
-				value: gateway.delay,
-				params: {
-					name: gateway.name
-				}
-			};
-		});
-    	};
+    	name: "opnsense_gateway_rtt",
+    	type: "gauge",
+    	description: "The RTT to the ISP",
+    	collect: async () => {
+    		const r = await fetch(`${OPNSENSE_API_URL}/api/routing/settings/searchGateway`, { headers: { Authorization: OPNSENSE_AUTH }});
+    
+    		const repsonse = await r.json();
+    		if (r.status !== 200) {
+    			throw new Error(response);
+    		}
+    
+    		const gateways = response.data.rows;
+    
+    		return gateways.map(gateway => {
+    			return {
+    				value: gateway.delay,
+    				params: {
+    					name: gateway.name
+    				}
+    			};
+    		});
+        }
     },
     {
-	name: "opnsense_gateway_packet_loss",
-	type: "gauge",
-	description: "The % of packet loss (0-100)",
-	collect: async () => {
-		const r = await fetch(`${OPNSENSE_API_URL}/api/routing/settings/searchGateway`, { headers: { Authorization: OPNSENSE_AUTH}});
-		
-		const repsonse = await r.json();
-		if (r.status !== 200) {
-			throw new Error(response);
-		}
-
-		const gateways = response.data.rows;
-
-		return gateways.map(gateway => {
-			return (
-				value: gateway.loss,
-				params: {
-					name: gateway.name
-				}
-			};
-		});
-	}
+    	name: "opnsense_gateway_packet_loss",
+    	type: "gauge",
+    	description: "The % of packet loss (0-100)",
+    	collect: async () => {
+    		const r = await fetch(`${OPNSENSE_API_URL}/api/routing/settings/searchGateway`, { headers: { Authorization: OPNSENSE_AUTH}});
+    		
+    		const repsonse = await r.json();
+    		if (r.status !== 200) {
+    			throw new Error(response);
+    		}
+    
+    		const gateways = response.data.rows;
+    
+    		return gateways.map(gateway => {
+    			return {
+    				value: gateway.loss,
+    				params: {
+    					name: gateway.name
+    				}
+    			};
+    		});
+    	}
     }
 ];
