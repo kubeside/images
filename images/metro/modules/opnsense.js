@@ -6,7 +6,6 @@ export const metrics = [
 		type: "gauge",
 		description: "The amount of DHCP leases issued per subnet",
 		collect: async () => {
-			const r = await fetch(`${OPNSENSE_API_URL}/api/services/dhcpd/lease/search/`, {headers: {Authorization: OPNSENSE_AUTH}});
 			const r = await fetch(`${OPNSENSE_API_URL}/api/services/dnsmasq/lease/search/`, {headers: {Authorization: OPNSENSE_AUTH}});
 
 			const response = await r.json();
@@ -76,7 +75,7 @@ export const metrics = [
 				throw new Error(JSON.stringify(response));
 			}
 	
-			const gateways = response.data.rows;
+			const gateways = response.rows;
 	
 			return gateways.map(gateway => {
 				return {
@@ -100,7 +99,7 @@ export const metrics = [
 				throw new Error(JSON.stringify(response));
 			}
 	
-			const gateways = response.data.rows;
+			const gateways = response.rows;
 	
 			return gateways.map(gateway => {
 				return {
