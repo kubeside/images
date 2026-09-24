@@ -10,8 +10,7 @@ export const metrics = [
 
 			const response = await r.json();
 			if (r.status !== 200) {
-				const detail = await response.text();
-				throw new Error(detail);
+				throw new Error(JSON.stringify(response));
 			}
 			const leases = response.rows;
 			const interfaceNameToLeaseCount = {};
@@ -47,8 +46,7 @@ export const metrics = [
 
 			const response = await r.json();
 			if (r.status !== 200) {
-				const detail = await response.text();
-				throw new Error(detail);
+				throw new Error(JSON.stringify(response));
 			}
 
 			const services = response.data;
@@ -74,8 +72,7 @@ export const metrics = [
 	
 			const repsonse = await r.json();
 			if (r.status !== 200) {
-				const detail = await response.text();
-				throw new Error(detail);
+				throw new Error(JSON.stringify(response));
 			}
 	
 			const gateways = response.data.rows;
@@ -99,8 +96,7 @@ export const metrics = [
 			
 			const response = await r.json();
 			if (r.status !== 200) {
-				const detail = await response.text();
-				throw new Error(detail);
+				throw new Error(JSON.stringify(response));
 			}
 	
 			const gateways = response.data.rows;
