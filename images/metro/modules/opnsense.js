@@ -70,7 +70,7 @@ export const metrics = [
 		collect: async () => {
 			const r = await fetch(`${OPNSENSE_API_URL}/api/routing/settings/searchGateway`, { headers: { Authorization: OPNSENSE_AUTH }});
 	
-			const repsonse = await r.json();
+			const response = await r.json();
 			if (r.status !== 200) {
 				throw new Error(JSON.stringify(response));
 			}
