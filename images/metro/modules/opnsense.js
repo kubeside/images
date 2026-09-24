@@ -6,7 +6,7 @@ export const metrics = [
 		type: "gauge",
 		description: "The amount of DHCP leases issued per subnet",
 		collect: async () => {
-			const r = await fetch(`${OPNSENSE_API_URL}/api/services/dhcpd/lease`, {headers: {Authorization: OPNSENSE_AUTH}});
+			const r = await fetch(`${OPNSENSE_API_URL}/api/services/dhcpd/lease/search/`, {headers: {Authorization: OPNSENSE_AUTH}});
 
 			const response = await r.json();
 			if (r.status !== 200) {
